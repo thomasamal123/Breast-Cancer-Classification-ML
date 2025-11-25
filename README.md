@@ -136,8 +136,5 @@ and execute all cells.
 └── README.md
 ```
 
----
 
-## 9. Contact
-For improvements or collaborative interest, feel free to reach out.
 

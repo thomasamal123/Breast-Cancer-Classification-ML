@@ -79,34 +79,46 @@ Classifies based on the majority vote of nearest neighbors; sensitive to scaling
 
 ---
 
-## 5. Model Performance Comparison
+## 5. Model Performance Comparison (Updated)
+
+Using correctly scaled data, the following performance was obtained:
 
 | Model | Train Accuracy | Test Accuracy | Observations |
-|------|----------------|---------------|--------------|
-| **Logistic Regression** | **0.9582** | **0.9561** | Excellent generalization; stable and consistent |
+|-------|----------------|---------------|--------------|
+| **Logistic Regression** | **0.9868** | **0.9737** | Strong generalization; stable and consistent |
 | Decision Tree | 1.0000 | 0.9386 | Clear overfitting; training accuracy too high |
-| Random Forest | 1.0000 | 0.9649 | High performance but overfits; less interpretable |
-| Support Vector Machine | 0.9142 | 0.9474 | Good model, but slightly lower accuracy |
-| KNN | 0.9406 | 0.9561 | Performs well but less stable across variations |
+| Random Forest | 1.0000 | 0.9561 | High performance but still overfits; less stable |
+| **Support Vector Machine (SVC)** | **0.9890** | **0.9825** | Best performance; excellent generalization on scaled features |
+| KNN | 0.9802 | 0.9473 | Good performance but sensitive to noise; less stable |
 
 ---
 
-## 6. Final Model Selection
+## 6. Final Model Selection – With Observations
 
-### Selected Model: **Logistic Regression**
+###  **Best Overall Model: Support Vector Machine (SVC)**
 
-### Justification  
-- Strong test accuracy (**0.9561**)  
-- Minimal gap between training and testing accuracy → **no overfitting**  
-- Computationally efficient  
-- Highly interpretable  
-- Works exceptionally well on linearly separable, scaled features  
-- More stable than tree‑based and neighbor‑based methods  
+####  Why SVC is the best:
+- Highest **test accuracy: 0.9825**
+- No signs of overfitting  
+- Works exceptionally well with scaled numerical features  
+- Strong boundary formation → robust generalization  
+- Balanced precision, recall, and F1‑score  
 
-### Why not the others?
-- **Decision Tree / Random Forest:** Perfect training accuracy (1.0) indicates overfitting.  
-- **SVM:** Robust but slightly weaker than Logistic Regression.  
-- **KNN:** Competitive but more sensitive to data scaling and neighborhood structure.  
+####  Why Logistic Regression wasn't selected:
+- Excellent model (0.9737 test accuracy)
+- Slightly weaker generalization than SVC
+- Still a strong, stable alternative
+
+#### Why Decision Tree & Random Forest were rejected:
+- Both show **train accuracy = 1.0**
+- Clear overfitting and lower test accuracy than SVC
+
+####  Why not KNN:
+- Good performance but:
+  - Lower test accuracy than SVC & Logistic Regression
+  - Sensitive to distance scaling and noise  
+  - Less stable across dataset variations
+ 
 
 ---
 
